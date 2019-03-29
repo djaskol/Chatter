@@ -1,9 +1,9 @@
 package com.example.chatter;
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TabsAccessorAdapter extends FragmentPagerAdapter {
 
@@ -29,7 +29,7 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
                 return null;
         }
 
-        return null;
+
     }
 
     @Override
@@ -47,15 +47,13 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
                 return "Chats";
             case 1:
 
-                return "Contacts";
+                return "Groups";
             case 2:
 
-                return "Groups";
+                return "Contacts";
 
             default:
                 return null;
         }
-
-        return null;
     }
 }
