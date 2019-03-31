@@ -1,6 +1,7 @@
 package com.example.chatter;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import androidx.viewpager.widget.ViewPager;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout myTabLayout;
 
     private TabsAccessorAdapter myTabs;
+    private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Chatter");

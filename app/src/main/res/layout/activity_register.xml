@@ -15,19 +15,29 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/login_picture"
+                android:id="@+id/register_picture"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/login_photo" />
-
+                android:src="@drawable/signup_photo" />
+            <ProgressBar
+                android:id="@+id/progressbar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:max="100"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_below="@+id/framelauout"
+                android:indeterminateTint="#1a09d6"
+                android:layout_marginTop="-7dp"/>
             <EditText
-                android:id="@+id/login_email"
+                android:id="@+id/register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/login_picture"
+                android:layout_below="@id/register_picture"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="25dp"
@@ -39,24 +49,52 @@
                 android:padding="4dp" />
 
             <EditText
-                android:id="@+id/login_password"
+                android:id="@+id/register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/login_email"
+                android:layout_below="@id/register_email"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="17dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="17dp"
                 android:background="@drawable/inputs"
-                android:drawableStAart="@drawable/"
+                android:drawableStart="@drawable/password"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="4dp" />
 
             <Button
-                android:id="@+id/button_login"
+                android:id="@+id/button_register"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below ="@id/register_password"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="17dp"
+                android:padding="4dp"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textColor= "@android:color/background_light"
+                android:background="@drawable/buttons"
+                />
+
+            <TextView
+                android:id="@+id/already_have_account_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button_register"
+                android:layout_alignParentStart="true"
+                android:text="Already have an account?"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="23dp"
+                android:textAlignment="center"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
