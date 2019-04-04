@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class registerActivity extends AppCompatActivity {
     @BindView(R.id.button_register)
@@ -35,6 +37,7 @@ public class registerActivity extends AppCompatActivity {
     @BindView(R.id.progressbar) ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference RootRef;
 
 
     @Override
@@ -45,6 +48,7 @@ public class registerActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
+        RootRef = FirebaseDatabase.getInstance().getReference();
         Button register = registerButton;
         TextView already = alreadyHaveAnAccount;
 
@@ -82,9 +86,12 @@ public class registerActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
+
+                        String currentUserId = mAuth.getCurrentUser().getUid();
+                        RootRef.child("Users").child(currentUserId).setValue("");
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(registerActivity.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
-                        goToRegisterActivitiy();
+                        sendUserToMainActivitiy();
                     }else{
                         String message = task.getException().toString();
                         Toast.makeText(registerActivity.this, message, Toast.LENGTH_SHORT).show();
@@ -100,6 +107,17 @@ public class registerActivity extends AppCompatActivity {
         startActivity(registerIntent);
 
     }
+
+    private void sendUserToMainActivitiy(){
+
+        Intent mainIntent = new Intent(registerActivity.this, MainActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
+
+    }
+
+
 
 
 }

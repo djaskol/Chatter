@@ -1,6 +1,7 @@
 package com.example.chatter;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TabsAccessorAdapter myTabs;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private FirebaseApp app;
 
 
     @Override
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        app = FirebaseApp.initializeApp(this);
+
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
